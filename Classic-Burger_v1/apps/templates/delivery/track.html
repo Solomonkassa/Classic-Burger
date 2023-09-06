@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delivery tracking</title>
+
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/styles.css') }}">
+
+  </head>
+  <body>
+
+  <!--========== SCROLL TOP ==========-->
+  <a href="#" class="scrolltop" id="scroll-top">
+      <i class='bx bx-chevron-up scrolltop__icon'></i>
+  </a>
+
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+      <nav class="nav bd-container">
+          <a href="#" class="nav__logo"><h1>classic Burger.</h1></a>
+
+          <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                  <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                  <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                  <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                  <li class="nav__item"><a href="login.html" class="nav__link">Log in</a></li>
+                  <li class="nav__item"><a href="login.html" class="nav__link">Register</a></li>
+                  <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
+
+                  <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+              </ul>
+          </div>
+
+          <div class="nav__toggle" id="nav-toggle">
+              <i class='bx bx-menu'></i>
+          </div>
+      </nav>
+  </header>
+  <!--========== HEADER ENDS ==========-->
+
+  <!--========== HEADER ENDS ==========-->
+      <!-- Section for displaying the map -->
+  <section class="contact section map-container" id="map-section">
+    <div id="map"></div>
+  </section>
+
+  <!-- Section for displaying order information -->
+  <section class="contact section orderinfo-container" id="orderinfo-section">
+    <p><h1>Your order is on the way!</h1></p>
+  </section>
+    <script src="static/styles/js/track.js"></script>
+    
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&channel=2"
+      async>
+    </script>
+
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+               <a href="#" class="nav__logo"><h1>classic Burger.</h1></a>
+                <span class="footer__description">Best Quality</span>
+                <div>
+                    <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Services</h3>
+                <ul>
+                    <li><a href="table.html" class="footer__link">Table Reservation</a></li>
+                    <li><a href="menu.html" class="footer__link">Order Food</a></li>
+                    <li><a href="#" class="footer__link">Delivery Tracking</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Event</a></li>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Address</h3>
+                <ul>
+                    <li>Akaki Kality</li>
+                    <li>Adiss Ababa, Ethiopia</li>
+                    <li>+251-912-433-761</li>
+                    <li>solomonmulu57@@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="footer__copy">&#169; Solomon Kassa. All rights reserved</p>
+        </footer>
+        <!--========== FOOTER ENDS ==========-->
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+         <!-- JavaScript code -->
+  <script>
+    // Function to initialize the map
+    function initMap() {
+      // Map initialization code
+    }
+
+    // Function to calculate and display the route
+    function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+      const selectedMode = "DRIVING"; // Get the mode from an input if needed
+      // Rest of the code for calculating and displaying route
+    }
+
+    // Wait for the page to load
+    window.addEventListener("load", () => {
+      // Create map renderer and service instances
+      const directionsRenderer = new google.maps.DirectionsRenderer();
+      const directionsService = new google.maps.DirectionsService();
+      
+      // Get map and orderinfo section elements
+      const mapSection = document.getElementById("map-section");
+      const orderInfoSection = document.getElementById("orderinfo-section");
+      
+      // Check if both sections are present
+      if (mapSection && orderInfoSection) {
+        // Create a new map instance
+        const map = new google.maps.Map(mapSection.querySelector("#map"), {
+          zoom: 14,
+          center: { lat: 18.030905 , lng: 79.542875 },
+        });
+
+        // Set the map for directions renderer
+        directionsRenderer.setMap(map);
+        
+        // Call the function to calculate and display the route
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+
+        // Add any event listeners for mode change here, if needed
+        // ...
+
+        // Show an alert indicating the delivery agent is on the way
+        window.alert("The delivery agent is on his way");
+      }
+    });
+  </script>
+
+
+        <!--========== MAIN JS ==========-->
+        <script src="static/styles/js/main.js"></script>
+  </body>
+</html>

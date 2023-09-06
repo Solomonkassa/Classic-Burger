@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/styles.css') }}">
+    <title>Menu</title>
+</head>
+<body>
+    <!-- Flash messages section -->
+    {% for mesg in get_flashed_messages() %}
+    <h1>{{ mesg }}</h1>
+    {% endfor %}
+
+    <!-- Scroll to top button -->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <!-- Header section -->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav__logo"><h1>classic Burger.</h1></a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="{{ url_for('home_page') }}" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="{{ url_for('home_page') }}#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="{{ url_for('home_page') }}#services" class="nav__link">Services</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav__item"><a href="{{ url_for('logout') }}" class="nav__link">Log Out</a></li>
+                    {% else %}
+                    <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Log in</a></li>
+                    <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Register</a></li>
+                    {% endif %}
+                    <li class="nav__item"><a href="{{ url_for('cart_page') }}" class="cart__button"><i class='bx bx-cart-alt'></i></a></li>
+                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+
+        <!-- Flash messages display -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </header>
+    <!-- Header ends -->
+
+    <!-- Menu section -->
+    <section class="menu section bd-container" id="menu">
+        <h2 class="section-title">Menu</h2>
+
+        <!-- Search box -->
+        <div class="search-box">
+            <button class="btn-search"><i class='bx bxs-search'></i></button>
+            <input type="text" class="input-search" placeholder="Search..">
+        </div>
+        
+        <!-- Menu items -->
+        <div class="menu__container bd-grid">
+            {% for item in items %}
+            <div class="menu__content">
+                <img src="{{ url_for('static', filename='styles/img/' + item.source) }}" alt="{{ item.name }}" class="menu__img">
+                <h3 class="menu__name">{{ item.name }}</h3>
+                <span class="menu__detail">{{ item.description }}</span>
+                <span class="menu__price">{{ item.price }} ETB</span>
+                <form method="POST">
+                    {{ add_form.hidden_tag() }}
+                    <input id="selected_item" name="selected_item" type="hidden" value="{{ item.name }}">
+                    {{ add_form.submit(class='button menu__button') }}
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Menu ends -->
+
+    <!-- Footer section -->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <!-- Footer content goes here -->
+        </div>
+        <p class="footer__copy">&#169; Solomon Kassa. All rights reserved</p>
+    </footer>
+    <!-- Footer ends -->
+
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- Main JavaScript -->
+    <script src="static/styles/js/main.js"></script>
+</body>
+</html>

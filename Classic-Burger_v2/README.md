@@ -1,8 +1,8 @@
-# Silver Leaf - Restaurant Web Application
+# Classic-Burger -  Web Application
 A Restaurant Web Application with **Table Booking, Online Food Ordering and Delivery Tracking.**<br/>
 
 # Brief Description
-Silver Leaf is a web-based application that is operated on a web server with its data being retained in a database. It is designed to enable the registered customer to reserve a table at the restaurant at a specified time in accordance with its availability, view and order the offered food item of their choice, and track the delivery of their order. <br/> 
+Classic-Burger is a web-based application that is operated on a web server with its data being retained in a database. It is designed to enable the registered customer to reserve a table at the restaurant at a specified time in accordance with its availability, view and order the offered food item of their choice, and track the delivery of their order. <br/> 
 Since the Internet provides a wider range of customers, the application will provide the restaurant with a chance to increase their profits while customers can avail the restaurant's services at the comforts of their homes.
 
 # How to install our project <br/>
@@ -74,8 +74,7 @@ The front-end portion of the web application has been developed using **HTML, CS
 ![contact-us](https://user-images.githubusercontent.com/92647313/143270006-6e1ab438-d112-44a0-be1e-a55a857a7dac.png)
 
 # Developed by: <br/>
-- [Vijay Lokith R R](https://github.com/vijaylokith)
-- [Chinthala Ashish](https://github.com/AshishAsh01)
-- [Elvis Theyo](https://github.com/avocadopelvis) 
+- [Solomon Kassa](https://github.com/Solomonkassa/)
+
 
 If you would like to make any suggestions to improve the web application, feel free to contact any of the developers.

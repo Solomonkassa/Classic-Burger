@@ -6,3 +6,9 @@ authy
 wtforms
 flask-wtf
 twilio
+greenlet==2.0.0
+gunicorn==20.0.4
+htmlmin==0.1.12
+idna==3.4
+importlib-metadata==5.0.0
+itsdangerous==2.1.2
